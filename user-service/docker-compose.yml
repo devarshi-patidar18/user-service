@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql-container:
+    image: mysql:8.0
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Dp@1812@
+      MYSQL_DATABASE: agrosense_users
+    ports:
+      - "3307:3306"   # host:container
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  user-service:
+    build: .
+    container_name: user-service
+    restart: always
+    depends_on:
+      - mysql-container
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/agrosense_users
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Dp@1812@
+    volumes:
+      - ./logs:/app/logs  # Optional: store logs outside container
+
+volumes:
+  mysql_data:
