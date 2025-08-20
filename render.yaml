@@ -1,6 +1,7 @@
 services:
   - type: web
     name: user-service
+    runtime: java
     plan: free
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/user-service-0.0.1-SNAPSHOT.jar
@@ -10,7 +11,7 @@ services:
       - key: SPRING_DATASOURCE_USERNAME
         value: agrosense_db_user
       - key: SPRING_DATASOURCE_PASSWORD
-        value: rCocTXPXLKBNmN1T0zZlvJT0z6V3ujCg
+        value: rCocTXPKLkBNmN1T0zZlvJT0z6V3ujCg
       - key: SPRING_JPA_HIBERNATE_DDL_AUTO
         value: update
       - key: SPRING_JPA_DATABASE_PLATFORM
