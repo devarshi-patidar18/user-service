@@ -9,4 +9,4 @@ services:
       - key: SPRING_DATASOURCE_USERNAME
         value: agrosense_db_user
       - key: SPRING_DATASOURCE_PASSWORD
-        value: rCocTXPKLkBNmN1T0zZlvJT0z6V3ujCg
+        value: rCocTXPXLKBNmN1T0zZlvJT0z6V3ujCg
