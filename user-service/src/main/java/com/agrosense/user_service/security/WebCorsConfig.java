@@ -13,7 +13,7 @@ public class WebCorsConfig {
   @Bean
   public CorsFilter corsFilter() {
     var cfg = new CorsConfiguration();
-    cfg.setAllowedOrigins(List.of("/**"));
+    cfg.setAllowedOrigins(List.of("http://localhost:4200","https://resplendent-frangipane-1e872e.netlify.app"));
     cfg.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
     cfg.setAllowedHeaders(List.of("*"));
     cfg.setAllowCredentials(true);
