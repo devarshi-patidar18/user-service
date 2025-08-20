@@ -1,24 +1,24 @@
 services:
   - type: web
     name: user-service
-    env: java
+    runtime: java
     plan: free
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/user-service-0.0.1-SNAPSHOT.jar
     envVars:
-      - key: SPRING_DATASOURCE_URL
+      - key: jdbc:postgresql://dpg-d2j4d5ili9vc73euvmbg-a:5432/agrosense_db
         fromDatabase:
-          name: agrosense_users
+          name: agrosense-db
           property: connectionString
-      - key: SPRING_DATASOURCE_USERNAME
+      - key: agrosense_db_user
         fromDatabase:
-          name: agrosense_users
+          name: agrosense-db
           property: user
-      - key: SPRING_DATASOURCE_PASSWORD
+      - key: rCocTXPXLKBNmN1T0zZlvJT0z6V3ujCg
         fromDatabase:
-          name: agrosense_users
+          name: agrosense-db
           property: password
 
 databases:
-  - name: agrosense_users
+  - name: agrosense-db
     plan: free
