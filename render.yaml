@@ -1,24 +1,19 @@
 services:
   - type: web
     name: user-service
-    runtime: java
     plan: free
     buildCommand: ./mvnw clean package -DskipTests
     startCommand: java -jar target/user-service-0.0.1-SNAPSHOT.jar
     envVars:
       - key: SPRING_DATASOURCE_URL
-        fromDatabase:
-          name: agrosense-db
-          property: connectionString
+        value: jdbc:postgresql://dpg-d2j4d5ili9vc73euvmbg-a.oregon-postgres.render.com:5432/agrosense_db
       - key: SPRING_DATASOURCE_USERNAME
-        fromDatabase:
-          name: agrosense-db
-          property: user
+        value: agrosense_db_user
       - key: SPRING_DATASOURCE_PASSWORD
-        fromDatabase:
-          name: agrosense-db
-          property: password
-
-databases:
-  - name: agrosense-db
-    plan: free
+        value: rCocTXPXLKBNmN1T0zZlvJT0z6V3ujCg
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
+      - key: SPRING_JPA_DATABASE_PLATFORM
+        value: org.hibernate.dialect.PostgreSQLDialect
+      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+        value: org.postgresql.Driver
