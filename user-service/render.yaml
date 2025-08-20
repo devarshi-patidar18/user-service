@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: user-service
+    env: java
+    plan: free
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/user-service-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: agrosense_users
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: agrosense_users
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: agrosense_users
+          property: password
+
+databases:
+  - name: agrosense_users
+    plan: free
