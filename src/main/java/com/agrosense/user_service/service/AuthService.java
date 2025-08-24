@@ -50,7 +50,7 @@ public class AuthService {
     authManager.authenticate(new UsernamePasswordAuthenticationToken(req.email(), req.password()));
     var user = users.findByEmail(req.email()).orElseThrow();
     var token = jwt.generate(user.getEmail(), Map.of("role", user.getRole().name(), "uid", user.getId()));
-    return new AuthResponse(token, null);
+    return new AuthResponse(token, user);
   }
 }
 
