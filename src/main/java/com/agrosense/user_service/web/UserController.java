@@ -1,6 +1,7 @@
 package com.agrosense.user_service.web;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,9 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
-  private final UserRepository usersRepo;
+
+  @Autowired
+  private UserRepository usersRepo;
 
   // @GetMapping("/me")
   // public UserResponse me(Authentication auth) {
